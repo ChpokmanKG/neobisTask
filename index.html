@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="today">
+      
+    </div>
+    <span id="clk"></span>
+    <div id="reverse">
+
+    </div>
+    <hr />
+      <div class="col-lg-4">
+        <div id="string-1">Ядра в вёдра, выдру в тундру!</div>
+        <div id="string-2">Выдрав с выдры в тундре гетры</div>
+        <div id="string-3">В недрах тундры, выдры в гетрах </div>
+        <div id="string-4">Вытру гетрой выдре морду </div>
+        <div id="string-5">Тырят в вёдра ядра кедров!</div>
+        <div id="string-6">Вытру выдрой ядра кедров</div>
+      </div>
+      <div class="col-lg-4">
+        <div class="element">Element 1</div>
+        <div class="element">Element 2</div>
+        <div class="element">Element 3</div>
+        <div class="element">Element 4</div>
+        <div class="element">Element 5</div>
+        <div class="element">Element 6</div>
+      </div>
+      <div class="col-lg-4">
+        <ol id="todo-list">
+        
+        </ol>
+      </div>
+      <article class="col-lg-12">
+        <h3>What is Lorem Ipsum?</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+        <h3>Where does it come from?</h3>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. from "The Extremes of Good and Evil" by Cicero</p>
+        <h3>Why do we use it?</h3>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+      </article>
+    
+      <div id="cart-items">
+        <div class="item">Milk 1 l.<span class="qty">x 2</span></div>
+        <div class="item">Cola 1.5 l. <span class="qty">x 1</span></div>
+        <div class="item">Bread<span class="qty">x 2</span></div>
+        <div class="item">Cheese<span class="qty">x 1</span></div>
+        <div class="item">Chocolate bar<span class="qty">x 3</span></div>
+      </div>
+        
+       <h2>Спсиок задач</h2>
+       <button id="addTask">
+         Добавить задачу
+       </button>
+       <ol id="myTasks">
+    
+       </ol>   
+  </div>
+
+  <script>
+    
+
+  //   for (var i = 0; i < 10; i++) {
+  //   setTimeout(function() {
+  //       console.log(i);
+  //   }
+  // }; Здесь ошибка так как тут нет закрывающей круглой скобки
+  function pad(num) {
+    return ("0" + num).slice(-2);
+  }
+  function time1() {
+  var today = new Date(),
+    h = today.getHours(),
+    m = today.getMinutes(),
+    s = today.getSeconds();
+    
+    h = h % 12;
+    h = h ? h : 12;
+    clk.innerHTML = `${h}:${(h >= 12 ? ' PM ' : ' AM ')}: ${pad(m)}:${pad(s)}`;
+  }
+  window.onload = function() {
+    var clk = document.getElementById('clk');
+    t = setInterval(time1, 1000);
+  }
+
+  function reverseNumber(){
+    var a = 12345;
+    var wrap = document.getElementById('reverse');
+    wrap.innerHTML = a;
+    wrap.innerHTML += "<br />" + ('' + a).split('').reverse().join('') + "<span> reverse</span>";
+  };
+
+  reverseNumber();
+
+  function Fact(num)
+    {
+      var val = 1;
+        for (var i = 2; i <= num; i++){
+              val = val * i;
+        } 
+            return val;
+    }
+    //alert(Fact(prompt()));
+
+    
+
+    function largeNumber(a,b){
+      if(a > b){
+        return console.log(a)
+      }
+      return console.log(b);
+    }
+    largeNumber(16,15);
+
+    function massiveString(){
+      var myColor = ["Red", "Green", "White", "Black"];
+      console.log(myColor.join(','))
+      console.log(myColor.join('+'))
+    }
+
+    massiveString();
+    
+    function month(){
+      var objDate = new Date("12/11/2009"),
+        locale = "en-us",
+        month = objDate.toLocaleString(locale, { month: "long" });
+        return month;
+    }
+
+    console.log(month());
+
+  function day(){
+    var day = new Date();
+    var nowDay = day.getDay();
+    var daysName = ["Monday","Thuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+    var timeWrap = document.getElementById('today');
+    
+    timeWrap.innerHTML = `Today is ${daysName[nowDay-1]}`;
+  }
+  day();
+  function firstWord(value){
+    switch(value[0]){
+      case "Q":
+        return "Буква большая";
+      break;
+      case "W":
+        return "Буква большая";
+      break;
+      case "E":
+        return "Буква большая";
+      break;
+      case "R":
+        return "Буква большая";
+      break;
+      case "T":
+        return "Буква большая";
+      break;
+      case "Y":
+        return "Буква большая";
+      break;
+      case "U":
+        return "Буква большая";
+      break;
+      case "I":
+        return "Буква большая";
+      break;
+      case "O":
+        return "Буква большая";
+      break;
+      case "P":
+        return "Буква большая";
+      break;
+      case "A":
+        return "Буква большая";
+      break;
+      case "S":
+        return "Буква большая";
+      break;
+      case "D":
+        return "Буква большая";
+      break;
+      case "F":
+        return "Буква большая";
+      break;
+      case "G":
+        return "Буква большая";
+      break;
+      case "H":
+        return "Буква большая";
+      break;
+      case "J":
+        return "Буква большая";
+      break;
+      case "K":
+        return "Буква большая";
+      break;
+      case "L":
+        return "Буква большая";
+      break;
+      case "Z":
+        return "Буква большая";
+      break;
+      case "X":
+        return "Буква большая";
+      break;
+      case "C":
+        return "Буква большая";
+      break;
+      case "V":
+        return "Буква большая";
+      break;
+      case "B":
+        return "Буква большая";
+      break;
+      case "N":
+        return "Буква большая";
+      break;
+      case "M":
+        return "Буква большая";
+      break;
+      default:
+        return "Либо это маленькая буква либо вы пишите не букву";
+    }   
+  }
+  
+
+    function firstTask(){
+      var element_1 = document.getElementById('string-1'),
+        element_2 = document.getElementById('string-2'),
+        element_3 = document.getElementById('string-3'),
+        element_4 = document.getElementById('string-4'),
+        element_5 = document.getElementById('string-5'),
+        element_6 = document.getElementById('string-6');
+    console.log(element_3.innerHTML);
+    console.log(element_5.innerHTML);
+    console.log(element_2.innerHTML);
+    console.log(element_6.innerHTML);
+    console.log(element_4.innerHTML);
+    console.log(element_1.innerHTML);
+    }
+
+    function secondTask(){
+      var element = document.getElementsByClassName('element');
+
+      for(var i = 0; i < 3; i++){
+        element[i].classList.add('red');
+      }
+
+      for(var j = 3; j < 6; j++){
+        element[j].classList.add('green');
+      }
+
+    }
+
+    function thirdTask(){
+      var tasks = ['Buy lemonade', 'Make toasts', 'Repair car', 'Play games', 'Pet a cat'];
+
+      function createLi(value){
+        var list = document.getElementById('todo-list');
+        var li = document.createElement('li');
+        li.className = "task";
+        li.innerText = value;
+        list.appendChild(li);
+      }
+
+      for(var i = 0; i < tasks.length; i++){
+        createLi(tasks[i]);
+      }
+
+    }
+    thirdTask();
+
+    function fourthTask(){
+        for (var p of document.getElementsByTagName('p')) {
+          var hr = document.createElement('hr');
+        p.insertAdjacentElement('afterend', hr);
+      }
+    }
+
+    function fiveTask(){
+      var cardWrap = document.getElementById('cart-items');
+      var items = document.getElementsByClassName('item');
+      var oldItem = items[4];
+      var papa = oldItem.parentNode;
+      var div = document.createElement('div');
+      var span = document.createElement('span');
+      span.className = "qty";
+      span.innerHTML = "x 4";
+      div.className = "item";
+      div.innerHTML = "Canned Fish ";
+      div.appendChild(span);
+      papa.replaceChild(div,oldItem);
+    }
+    function theSixthTask(){
+      var button = document.getElementById('addTask');
+      var taskWrap = document.getElementById('myTasks');
+
+      function createLi(value){
+        var li = document.createElement('li');
+        li.innerText = value;
+        taskWrap.appendChild(li);
+      }
+      function getTask(){
+        var text = prompt("Текст задачи, БЫСТРО!","");
+        if(text.length > 0){
+          createLi(text);
+        }
+      }
+      button.addEventListener('click',getTask);
+    }
+    theSixthTask();
+  </script>
+</body>
+</html>
